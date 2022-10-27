@@ -22,17 +22,17 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://alpha-coders-server.vercel.app/courses')
             },
             {
                 path: '/category/:id',
                 element: <CourseDetails></CourseDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://alpha-coders-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><CheckoutPage></CheckoutPage></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`)
+                loader: ({ params }) => fetch(`https://alpha-coders-server.vercel.app/checkout/${params.id}`)
             },
             {
                 path: '/blog',
