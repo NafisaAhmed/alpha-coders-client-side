@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
@@ -11,10 +12,17 @@ import logo from '../../../images/alpha.png';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [toggle, setToggle] = useState(true);
     const handleLogout = () => {
         logOut()
             .then(() => { })
             .catch(error => console.error(error))
+    }
+    const handleDark = () => {
+        setToggle(false);
+    }
+    const handleLight = () => {
+        setToggle(true);
     }
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -49,6 +57,14 @@ const Header = () => {
                                         </Link>
                                     </>
                             }
+                            <Nav.Link>
+                                {
+                                    toggle ? <Button variant='light' onClick={handleDark}>Light Theme</Button>
+                                        :
+                                        <Button
+                                            variant='dark' onClick={handleLight}>Dark Theme</Button>
+                                }
+                            </Nav.Link>
                         </>
                     </Nav>
                 </Navbar.Collapse>

@@ -11,10 +11,10 @@ const Courses = () => {
         <div>
             <Container>
                 <Row>
-                    <Col lg='2' className='mt-4'>
+                    <Col lg='2' md='3' className='mt-4'>
                         <LeftSideNav></LeftSideNav>
                     </Col>
-                    <Col lg='10' className='course-container mt-5'>
+                    <Col lg='10' md='9' className='course-container mt-5'>
                         {
                             allCourses.map(courses => <CourseCard
                                 key={courses.id}

@@ -18,7 +18,7 @@ const CourseContent = ({ contents }) => {
     return (
         <>
             <div ref={componentRef}>
-                <Card className="text-white">
+                <Card className="text-white lh-1">
                     <Card.Img className='w-100' style={{ height: '350px', filter: 'brightness(30%)' }} src={content_url} alt="Card image" />
                     <Card.ImgOverlay className='mx-5 px-5 mt-5'>
                         <div className='d-flex'>
@@ -26,8 +26,8 @@ const CourseContent = ({ contents }) => {
                             <button onClick={handlePrint} className='fs-3 p-0 bg-dark text-white ms-2'><FontAwesomeIcon icon={faFilePdf}></FontAwesomeIcon></button>
                         </div>
                         <Card.Text>
-                            {details.length > 300 ?
-                                <>{details.slice(0, 300) + '...'}</>
+                            {details.length > 160 ?
+                                <>{details.slice(0, 160) + '...'}</>
                                 :
                                 <>{details}</>
                             }
