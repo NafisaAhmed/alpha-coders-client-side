@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print'
+import { Button } from 'react-bootstrap';
 
 const CourseContent = ({ contents }) => {
     const { title, total_enrolled, instructor, details, content_url, price, rating } = contents;
@@ -41,6 +42,7 @@ const CourseContent = ({ contents }) => {
                     </Card.ImgOverlay>
                 </Card>
             </div>
+            <Link className='d-flex justify-content-center mt-5 mx-5'><Button>Get Premium Access</Button></Link>
         </>
     );
 };
