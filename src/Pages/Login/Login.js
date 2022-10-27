@@ -6,11 +6,12 @@ import { ButtonGroup } from 'react-bootstrap';
 import { FaGoogle, FaGithub } from 'react-icons/fa'
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { signIn, providerLogin } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -28,6 +29,14 @@ const Login = () => {
     }
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -52,7 +61,7 @@ const Login = () => {
             <br />
             <ButtonGroup vertical>
                 <Button onClick={handleGoogleSignIn} className='my-3' variant="outline-primary"> <FaGoogle></FaGoogle> Login with Google</Button>
-                <Button variant="outline-dark"><FaGithub></FaGithub> Login with Github</Button>
+                <Button onClick={handleGithubSignIn} variant="outline-dark"><FaGithub></FaGithub> Login with Github</Button>
             </ButtonGroup>
             <p className='mt-3'><small>No account yet? <Link to='/register'>Register</Link></small></p>
             <br />
