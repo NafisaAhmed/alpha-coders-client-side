@@ -5,9 +5,9 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
-
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -22,9 +22,21 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                handleUpdateUserProfile(name, photoURL);
             })
             .catch(error => console.error(error))
     }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <Form onSubmit={handleSubmit} className='w-50 mx-auto mt-5'>
             <Form.Group className="mb-3" controlId="formBasicEmail">

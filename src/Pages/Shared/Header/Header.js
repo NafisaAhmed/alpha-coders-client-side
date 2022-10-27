@@ -36,7 +36,7 @@ const Header = () => {
                                 user?.uid ?
                                     <>
                                         <Button onClick={handleLogout} variant='outline-dark' className='fw-bold me-3' >Log Out</Button>
-                                        <Image style={{ height: '40px' }} roundedCircle src={user?.photoURL
+                                        <Image style={{ height: '40px', width: '40px' }} roundedCircle src={user?.photoURL
                                         } title={user.displayName}></Image>
                                     </>
                                     :
