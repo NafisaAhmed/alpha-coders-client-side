@@ -8,7 +8,7 @@ import { useReactToPrint } from 'react-to-print'
 import { Button } from 'react-bootstrap';
 
 const CourseContent = ({ contents }) => {
-    const { category_id, title, total_enrolled, instructor, details, content_url, price, rating } = contents;
+    const { category_id, title, total_enrolled, instructor, details, content_url, price, rating, requires, learn } = contents;
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -41,6 +41,8 @@ const CourseContent = ({ contents }) => {
                         <Card.Text className='fw-bold fs-5'>{price}</Card.Text>
                     </Card.ImgOverlay>
                 </Card>
+                <h4 className='text-center mt-5'>Requirement: {requires}</h4>
+                <p className='text-center'>Learnings: {learn}</p>
             </div>
 
             <Link to={`/checkout/${category_id}`} className='d-flex justify-content-center mt-5 mx-5'><Button>Get Premium Access</Button></Link>
